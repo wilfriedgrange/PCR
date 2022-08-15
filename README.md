@@ -1,10 +1,9 @@
 # PCR
 
 A .R file allowing to calculate errors in PCR. 
+This is the code I am using to run this [online tool](https://biosoft-ipcms.fr/files/code.php).
 
-This is the code I have been using to run this [online tool](https://biosoft-ipcms.fr/files/code.php).
-
-
+## Background 
 - ThermoFisher has a [PCR Calculator](https://www.thermofisher.com/uk/en/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/thermo-scientific-web-tools/pcr-fidelity-calculator.html), which is basic. This  just caculates ~ $1-l \times numcycles \times u$ ( $l$, fragment length; $u$, error rate and $numcycles$ the number of cycles), which is nothing else than the probality for a molecule of length $l \times numcycles$ to have no errors. Thus, it assumes 100% efficiency and ignores that some molecules are not replicated and so contribute to the overall number of molecules without errors. 
 
 - Here, I use a more rigourous approach (a good article can be found [here](https://doi.org/10.3929/ethz-a-006088024)).
@@ -29,3 +28,16 @@ As for the error rates, you may use this :
 | DV Exo-	| 5.0E-4| 	0.3| 
 
 Adapted from Potapov V, Ong JL [PLOS ONE 2017](https://doi.org/10.1371/journal.pone.0169774)
+
+## How to use
+
+Just change the numbers at the begining of the code.
+```
+# Rate
+u<-1.5E-4
+# Fragment length
+l<-2000
+# Number of Cycles
+numcycles<-25
+```
+
