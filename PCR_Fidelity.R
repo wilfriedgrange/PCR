@@ -8,9 +8,9 @@ rm(list=ls()) # empty memory
 # Rate
 u<-1.5E-4
 # Fragment length
-l<-1000
+l<- 2000
 # Number of Cycles
-numcycles<-25
+numcycles=25
 ###################################
 #Fixed 
 ###################################
@@ -36,33 +36,13 @@ shift <- function(x, n, invert=FALSE, default=0){
 #Init
 ###################################
 data<-data.frame(matrix(0,ncol = mut , nrow = (numcycles+1)))
-vec_p<-rep(0,mut)
-vec_p[1]<-N
-data[1,]<-vec_p
-#Calculate mutation prob
+molecules<-c(1000,rep(0,(mut-1)))
 pr_mutation<-sapply(1:mut, function(i){dmultinom(c((i-1),l-i+1),l,prob=c(u,1-u))})
-#First cycle (could be in the loop too)
-#Determine vector of mutations
-n<-round(N*lambda[1])
-vec<-round(pr_mutation*n)
-#Check that round number is ok
-if (sum(vec) != n){
-  imax<-which.max(abs(round(pr_mutation*n)-pr_mutation*n))
-  if (sum(vec) > n){
-    vec[imax]<-vec[imax]-1
-  }
-  else if (sum(vec) < n){
-    vec[imax]<-vec[imax]+1
-  }
-}
-#Add previous vector
-vec<-vec+vec_p
-molecules<-vec
-data[2,]<-molecules
 ###################################
 #Main
 ###################################
-results<-sapply(1:(numcycles-1), function(k){
+n<-round(N*lambda[1])
+results<-sapply(0:(numcycles-1), function(k){
   # molecules has "mut" elements (molecules have 0, 1, 2 ... mutations)
   # Calculate number of new molecules generated
   n<-round(sum(molecules)*lambda[k+1])
@@ -84,11 +64,11 @@ results<-sapply(1:(numcycles-1), function(k){
   Error_shifted<-data.frame(matrix(0,ncol = mut , nrow = mut))
   Error[1,]<-rmultinom(1,size=vec[1],prob=prob_multi)
   Error_shifted[1,]<-Error[1,]
-  for (i in 2:mut)
-  {
-    Error[i,]<-rmultinom(1,size=vec[i],prob=prob_multi)
-    Error_shifted[i,]<-shift(Error[i,],(i-1))
+  sapply(2:mut,function(j){
+    Error[j,]<-rmultinom(1,size=vec[j],prob=prob_multi)
+    Error_shifted[j,]<<-shift(Error[j,],(j-1))
   }
+  )
   SUM<-apply(Error_shifted,2,sum)
   # Update Molecules	
   molecules<<-molecules+SUM
