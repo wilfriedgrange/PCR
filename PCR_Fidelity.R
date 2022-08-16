@@ -99,4 +99,4 @@ results<-sapply(1:(numcycles-1), function(k){
 #output
 ###################################
 res<-signif(100*molecules/sum(molecules),3)
-paste("[Code still under test] % molecules with 0 error:", res[1], ', 1 error: ', res[2], ', 2 errors: ', res[3])
+paste("Molecules with 0 error:", res[1], ', 1 error: ', res[2], ', 2 errors: ', res[3])
