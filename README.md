@@ -38,5 +38,5 @@ u<-1.5E-4
 # Fragment length
 l<-2000
 # Number of Cycles
-numcycles<-25
+c<-25
 ```
