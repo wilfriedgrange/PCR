@@ -1,29 +1,29 @@
-#PCR Fidelity Calculator (R Code)
-# Adapted from doi.org/10.3929/ethz-a-006088024
+# PCR Fidelity Calculator (R Code)
+# From doi.org/10.3929/ethz-a-006088024
 # W. Grange (2018/22)
 rm(list=ls()) # empty memory
 ###################################
-#Declare Variables
+# Declare Variables
 ###################################
-# Rate
+# Rate (doi.org/10.1371/journal.pone.0169774)
 u<-1.5E-4
 # Fragment length
-l<- 2000
+l<-2000
 # Number of Cycles
-numcycles<-25
+c<-25
 ###################################
-#Fixed 
+# Fixed 
 ###################################
 # Number of mutations to calculate
 mut<-10
 # Number of molecules
 N<-1000
-#Efficiency (doi.org/10.1093/nar/25.15.3082)
+# Efficiency (doi.org/10.1093/nar/25.15.3082)
 lambda<-c(rep(0.872,20),rep(0.743,5),rep(0.146,5))
 ###################################
-#Functions
+# Functions
 ###################################
-#Shift Function (https://stackoverflow.com/questions/26997586/r-shifting-a-vector)
+# Shift Function (https://stackoverflow.com/questions/26997586/r-shifting-a-vector)
 shift <- function(x, n, invert=FALSE, default=0){
   stopifnot(length(x)>=n)
   if(n==0){
@@ -33,13 +33,13 @@ shift <- function(x, n, invert=FALSE, default=0){
   return(c(rep(default, n), x[seq_len(length(x)-n)]))
 }
 ###################################
-#Init
+# Init
 ###################################
-data<-data.frame(matrix(0,ncol = mut , nrow = (numcycles+1)))
+data<-data.frame(matrix(0,ncol = mut , nrow = (c+1)))
 molecules<-c(N,rep(0,(mut-1)))
 pr_mutation<-sapply(1:mut, function(i){dmultinom(c((i-1),l-i+1),l,prob=c(u,1-u))})
 ###################################
-#Main
+# Main
 ###################################
 n<-round(N*lambda[1])
 results<-sapply(0:(numcycles-1), function(k){
@@ -76,7 +76,7 @@ results<-sapply(0:(numcycles-1), function(k){
 }
 )
 ###################################
-#output
+# output
 ###################################
 res<-signif(100*molecules/sum(molecules),3)
 paste("Molecules with 0 error:", res[1], ', 1 error: ', res[2], ', 2 errors: ', res[3])
