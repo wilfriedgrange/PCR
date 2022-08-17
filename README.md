@@ -4,11 +4,11 @@ A .R file allowing to calculate errors in PCR.
 This is the code I am using to run this [online tool](https://biosoft-ipcms.fr/files/code.php).
 
 ## Background 
-- ThermoFisher has a [PCR Calculator](https://www.thermofisher.com/uk/en/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/thermo-scientific-web-tools/pcr-fidelity-calculator.html), which is basic. This  just caculates ~ $1-l \times numcycles \times u$ ( $l$, fragment length; $u$, error rate and $numcycles$ the number of cycles), which is nothing else than the probality for a molecule of length $l \times numcycles$ to have no errors. Thus, it assumes 100% efficiency and ignores that some molecules are not replicated and so contribute to the overall number of molecules without errors. 
+- ThermoFisher has a [PCR Calculator](https://www.thermofisher.com/uk/en/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/thermo-scientific-web-tools/pcr-fidelity-calculator.html), which is basic and incaccurate. It  just caculates ~ $1-l \times c \times u$ ( $l$, fragment length; $u$, error rate and $c$ the number of cycles), which is nothing else than the probality for a molecule of length $l \times c$ to have no errors. Thus, it assumes 100% efficiency and ignores that some molecules are not replicated and so contribute to the overall number of molecules without errors. 
 
 - Here, I use a more rigourous approach (a good article can be found [here](https://doi.org/10.3929/ethz-a-006088024)).
 
-- BTW, New England Biolabs also has an online  [PCR fidelity estimator](https://pcrfidelityestimator.neb.com) but they do not explain how the calculations are performed.
+- Note that, New England Biolabs also has an online  [PCR fidelity estimator](https://pcrfidelityestimator.neb.com) but they do not explain how the calculations are performed.
 
 
 As for the error rates, you may use this :
