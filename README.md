@@ -3,8 +3,10 @@
 A .R file allowing to calculate errors in Polymerase Chain Reaction (PCR). 
 This is the code I am using to run this [online tool](https://biosoft-ipcms.fr/files/code.php).
 
+![PCR](https://user-images.githubusercontent.com/110093777/185176173-4c0754f1-3d10-4041-99f7-a10b2d738da2.jpg)
+
 ## Background 
-- ThermoFisher has a [PCR Calculator](https://www.thermofisher.com/uk/en/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/thermo-scientific-web-tools/pcr-fidelity-calculator.html), which is basic and incaccurate. It  just calculates ~ $1-l \times c \times u$ ( $l$, fragment length; $u$, error rate and $c$ the number of cycles), which is nothing else than the probality for a molecule of length $l \times c$ to have no errors. Thus, it assumes 100% efficiency and ignores that some molecules are not replicated and so contribute to the overall number of molecules without errors. 
+- ThermoFisher has a [PCR Calculator](https://www.thermofisher.com/uk/en/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/thermo-scientific-web-tools/pcr-fidelity-calculator.html), which is basic and incaccurate as it  just calculates $1-l \times c \times u$ ( $l$, fragment length; $u$, error rate and $c$ the number of cycles). This is nothing else than the probality for a molecule of length $l \times c$ to have no errors. Thus, it assumes 100% efficiency and ignores that some molecules are not replicated and so contribute to the overall number of molecules without errors. 
 
 - Here, I use a more rigourous approach (a good article can be found [here](https://doi.org/10.3929/ethz-a-006088024)).
 
