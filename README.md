@@ -1,6 +1,6 @@
 # PCR
 
-A .R file allowing to calculate errors in PCR. 
+A .R file allowing to calculate errors in Polymerase Chain Reaction (PCR). 
 This is the code I am using to run this [online tool](https://biosoft-ipcms.fr/files/code.php).
 
 ## Background 
