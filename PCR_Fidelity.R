@@ -36,7 +36,7 @@ shift <- function(x, n, invert=FALSE, default=0){
 #Init
 ###################################
 data<-data.frame(matrix(0,ncol = mut , nrow = (numcycles+1)))
-molecules<-c(1000,rep(0,(mut-1)))
+molecules<-c(N,rep(0,(mut-1)))
 pr_mutation<-sapply(1:mut, function(i){dmultinom(c((i-1),l-i+1),l,prob=c(u,1-u))})
 ###################################
 #Main
