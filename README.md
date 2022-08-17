@@ -10,7 +10,7 @@ This is the code I am using to run this [online tool](https://biosoft-ipcms.fr/f
 
 - Here, I use a more rigourous approach (a good article can be found [here](https://doi.org/10.3929/ethz-a-006088024)).
 
-- Note that, New England Biolabs also has an online  [PCR fidelity estimator](https://pcrfidelityestimator.neb.com) but they do not explain how the calculations are performed.
+- Note that New England Biolabs also has an online  [PCR fidelity estimator](https://pcrfidelityestimator.neb.com) but they do not explain how the calculations are performed.
 
 
 As for the error rates, you may use this :
